@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/julianelchakieh/Documents/Novel Final.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1368"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Novels"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Authors" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Novels" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="NovelApp.sql">DROP TABLE IF EXISTS Buy;
+DROP TABLE IF EXISTS Novels;
+DROP TABLE IF EXISTS Authors;
+DROP TABLE IF EXISTS Consumers;
+
+CREATE TABLE Consumers
+(
+	Name VARCHAR(50) NOT NULL,
+	DOB DATE NOT NULL,
+	ConsumerID INT NOT NULL,
+	PRIMARY KEY (ConsumerID)
+);
+
+CREATE TABLE Novels
+(
+	Name VARCHAR(50) NOT NULL,
+	Quantity INT NOT NULL,
+	NovelID INT NOT NULL,
+	AuthorID INT NOT NULL,
+	PRIMARY KEY (NovelID),
+	FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID) 
+);
+
+CREATE TABLE Authors
+(
+	AuthorID INT NOT NULL,
+	Name VARCHAR(50) NOT NULL,
+	DOB DATE NOT NULL,
+	PRIMARY KEY (AuthorID) 
+);
+
+CREATE TABLE Buy
+(
+	ConsumerID INT NOT NULL,
+	NovelID INT NOT NULL,
+	Quantity INT NOT NULL, 
+	FOREIGN KEY (ConsumerID) REFERENCES Consumers(ConsumerID),
+	FOREIGN KEY (NovelID) REFERENCES Novels(NovelID)
+);
+
+INSERT INTO Consumers(Name, DOB, ConsumerID)
+VALUES (&quot;Son&quot;, 2003, 11111);
+
+INSERT INTO Consumers(Name,  DOB, ConsumerID)
+VALUES (&quot;Julian&quot;,  2003, 12551);
+
+INSERT INTO Consumers(Name,  DOB, ConsumerID)
+VALUES (&quot;Gorilla&quot;,  2000, 42052);
+
+INSERT INTO Consumers(Name,  DOB, ConsumerID)
+VALUES (&quot;Vladimir&quot;,  1986, 25246);
+
+INSERT INTO Authors(Name, DOB, AuthorID)
+VALUES (&quot;Joanne Rowling&quot;, 1965, 12056);
+
+INSERT INTO Authors(Name, DOB, AuthorID)
+VALUES (&quot;Rick Riordan&quot;, 1964, 15304);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Harry Potter and the Sorcerer’s Stone&quot;, 30, 10001, 12056);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Harry Potter and the Chamber of Secrets&quot;, 20, 10002, 12056);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Harry Potter and the Order of the Phoenix&quot;,  40, 10005, 12056);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Harry Potter and the Prisoner of Azkaban&quot;, 30, 10003, 12056);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Harry Potter and the Deathly Hallows&quot;,  60, 10007, 12056);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Harry Potter and the Half-Blood Prince&quot;, 40, 10006, 12056);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Percy Jackson and the Lightning Thief&quot;, 50, 10386, 15304);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Percy Jackson and the Last Olympian&quot;, 30, 10390, 15304);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;Percy Jackson and the Titan’s Curse&quot;, 40, 10388, 15304);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;The Hero of Olympus&quot;, 40, 10440, 15304);
+
+INSERT INTO Novels(Name,  Quantity, NovelID, AuthorID)
+VALUES (&quot;The Blood of Olympus&quot;,  30, 10445, 15304);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (11111, 10440, 1);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (11111, 10445, 1);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (12551, 10001, 1);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (12551, 10002, 2);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (42052, 10006, 1);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (25246, 10001, 10);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (25246, 10002, 10);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (25246, 10003, 10);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (25246, 10005, 10);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (25246, 10006, 10);
+
+INSERT INTO Buy(ConsumerID, NovelID, Quantity)
+VALUES (25246, 10007, 10);
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
